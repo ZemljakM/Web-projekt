@@ -40,6 +40,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $sql = "INSERT INTO posts (user_id, image, description, created_at, likes, comments) VALUES ('$userId', '$target_file', '$description', CURRENT_TIMESTAMP, 0, 0)";
             if ($con->query($sql) === TRUE) {
                 echo "New post created successfully";
+                header("Location: home.php");
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
@@ -59,8 +60,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <title>Animal shelter</title>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="new_post.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -71,7 +74,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <a href="new_post.php">New post</a>
             <a href="profile.php">Profile</a>
             <a href="adoption.php">Adoption</a>
-            <a href="donation.php">Donation</a>
             <a href="logout.php" class="logout">Logout</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
@@ -81,18 +83,42 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
     </nav>
 
-    <div class="container">
+    <div class="form-container-post">
         <h2>Create a New Post</h2>
         <form action="new_post.php" method="post" enctype="multipart/form-data">
-            <label for="image">Choose an image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" cols="50" required></textarea>
-            <button type="submit">Post</button>
+            <header>
+                <div class="set">
+                    <div class="post-description">
+                        <label for="description" class="set-label">Description</label>
+                        <input type="text" id="description" name="description" placeholder="Write a description..." required>
+                    </div>
+                </div>
+                <div class="set">
+                    <div class="photo">
+                        <label for="image" id="file-label" class="custom-file-upload">
+                            <i class="fa fa-camera"></i> Upload a photo
+                        </label>
+                        <input type="file" id="image" name="image" accept="image/*" style="display:none;" required>
+                    </div>
+                    <footer>
+                        <div class="set">
+                            <button type="submit">Share post</button>
+                        </div>
+                    </footer>
+                </div>
+            </header>
+            
         </form>
     </div>
 
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('image').addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            var label = document.getElementById('file-label');
+            label.innerHTML = '<i class="fa fa-camera"></i> ' + fileName;
+        });
+    </script>
 </body>
 </html>

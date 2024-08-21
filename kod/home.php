@@ -8,7 +8,7 @@
     }
 
 
-    $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'];
+    $isAdmin = isset($_SESSION['user_logged_in']) && $_SESSION['is_admin'];
 
     if (isset($_GET['getPosts']) && $_GET['getPosts'] == 'true') {
         $userId = $_SESSION['user_id'];
@@ -19,11 +19,7 @@
         $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
         echo json_encode($posts);
         exit;
-    }
-
-    
-    
-    
+    }  
 ?>
 
 
@@ -50,9 +46,8 @@
             <?php if ($isAdmin): ?>
                 <a href="new_post.php">New post</a>
             <?php endif; ?>
-            <a href="profile.php">Profile</a>
             <a href="adoption.php">Adoption</a>
-            <a href="donation.php">Donation</a>
+            <a href="profile.php">Profile</a>
             <a href="logout.php" class="logout">Logout</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
@@ -62,17 +57,11 @@
         </div>
     </nav>
 
-<div class="main-content">
-    
-</div>
+    <div class="main-content"></div>
     
 
     <script src="script.js"></script>
-    <script>
-
-        
-        
-    </script>
+    
 </body>
 </html>
 

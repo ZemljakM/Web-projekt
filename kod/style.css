@@ -108,6 +108,10 @@ body {
     line-height: 57px;
 }
 
+.toggle-password{
+    cursor: pointer;
+}
+
 .btn.btn-success {
     width: 100%;
     height: 45px;

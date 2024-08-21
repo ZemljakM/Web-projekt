@@ -97,6 +97,12 @@ nav a:hover::before {
 
 }
 
+@media screen and (max-width: 768px) {
+    .main-content {
+        justify-content: center;
+    }
+
+}
 
 @media screen and (max-width: 1024px) {
     .nav-links {
@@ -146,22 +152,25 @@ h1{
 }
 
 .main-content {
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.post {
+.post,
+.post-desc {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     width: 300px;
-    height: 550px;
+    height: 450px;
     margin: 20px;
+    margin-bottom: 0;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
 
 .post-header {
     display: flex;
@@ -200,9 +209,9 @@ h1{
 }
 
 .post-images img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
+    height: 50%; 
+    width: 100%; 
+    object-fit: cover;
 }
 
 
@@ -228,3 +237,135 @@ h1{
     background-color: transparent;
     border: none;
 }
+
+
+
+.animal-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    height: 450px;
+    margin: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.animal-card img {
+    height: 50%; 
+    width: 100%; 
+    object-fit: cover;
+}
+
+.animal-card-body {
+    padding: 16px;
+    width: 100%;
+    text-align: left;
+}
+
+.animal-card-body h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.animal-card-body p {
+    margin: 8px 0;
+}
+
+.animal-card-body a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 8px;
+    background-color: #5c5470;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.animal-card-body a:hover {
+    background-color: #5c5470;
+}
+
+.animals-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5em;
+}
+
+.add_animal{
+    display: block;
+    width: 97%;
+    height: 50px;
+    margin-top: 100px;
+}
+
+
+.add-animal-button { 
+    padding: 10px 20px;
+    float: right;
+    background-color: #dbd8e3;
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    width: 200px;
+}
+
+.add-animal-button:hover {
+    background-color: #dbd8e3;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 6em auto;
+    padding: 20px;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+.profile-info h2 {
+    color: white;
+    margin-bottom: 1em;
+    font-size: 2em;
+}
+
+.profile-info p{
+    color: white;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+.adoptions-list,
+.comments-section {
+    margin-top: 2em;
+}
+.adoptions-list h2 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+.adoptions-list ul,
+.comments-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+.adoptions-list li,
+.comments-section li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.adoptions-list li span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+

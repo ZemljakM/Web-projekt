@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php'); // Adjust as per your database connection details
+include('db.php'); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id']) && isset($_POST['like_action'])) {
     $postId = $_POST['post_id'];

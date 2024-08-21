@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
@@ -63,9 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="nav-links">
             <a href="home.php">Home</a>
             <a href="new_post.php">New post</a>
-            <a href="profile.php">Profile</a>
             <a href="adoption.php">Adoption</a>
-            <a href="donation.php">Donation</a>
+            <a href="profile.php">Profile</a>
             <a href="logout.php" class="logout">Logout</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
@@ -75,30 +75,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
 
-    <div class="post">
+<div class="container-desc">
+    <div class="post-desc">
         <div class="post-header">
             <span class="username">Animal shelter</span>
-            <ion-icon name="create-outline"></ion-icon>
         </div>
         <div class="post-images">
             <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['description']; ?>">
-        </div>
-        <div class="post-actions">
-            <ion-icon name="heart-outline" class="like-icon"></ion-icon>
-            <ion-icon name="chatbubble-outline"></ion-icon>
         </div>
         <div class="post-likes"><?php echo $post['likes']; ?> likes</div>
         <div class="post-description"><?php echo $post['description']; ?></div>
         <div class="post-comments"><?php echo $post['comments']; ?> comments</div>
     </div>
     
+    <div class="form-container-desc">
+        <h2>New Description</h2>
+        <form method="post" action="">
+            <header>
+                <div class="set">
+                    <div class="post-description">
+                        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                        <input type="text" id="description" name="description" value="<?php echo $post['description']; ?>" required>
+                    </div>
+                </div>
+                <div class="set">
+                    <footer>
+                        <button type="submit" name="edit_post">Edit Post</button>
+                        <button type="submit" name="delete_post">Delete Post</button>
+                    </footer>
+                </div>
+            </header>
+        </form>
+    </div>
+</div>
 
-    <form method="post" action="">
-        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-        <textarea name="description"><?php echo $post['description']; ?></textarea>
-        <button type="submit" name="edit_post">Edit Post</button>
-        <button type="submit" name="delete_post">Delete Post</button>
-    </form>
-
+<script src="script.js"></script>
 </body>
 </html>

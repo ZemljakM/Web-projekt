@@ -1,0 +1,305 @@
+.container-comments,
+.container-desc{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5em auto;
+    width: fit-content;
+    height: fit-content;
+}
+
+.form-container-comments,
+.form-container-desc{
+    height: fit-content;
+    background-color: #dbd8e3;
+    margin-top: 20px;
+    border-radius: 7px;
+    width: 26em;
+    padding-bottom: 1em;
+}
+
+
+.post-desc{
+    height: fit-content;
+}
+
+
+.form-container,
+.form-container-post
+{
+    height: auto;
+    margin: 8em auto;
+    background-color: #dbd8e3;
+}
+
+@media only screen and (max-width: 426px){
+    .form-container-comments,
+    .form-container-desc{
+        width: 80%;
+    }
+
+    .form-container,
+    .form-container-post
+    {
+        width: 98%;
+    }
+
+    .form-container-desc .set{
+        height: 3em;
+    }
+
+    .form-container-desc footer{
+        height: fit-content;
+        margin-bottom: 1em;
+    }
+
+    .form-container-desc button{
+        padding: 7px;
+        height: fit-content;
+        width: fit-content;
+    }
+}
+
+@media only screen and ((min-width: 427px) and (max-width: 768px)){
+    .container-comments,
+    .container-desc{
+        justify-content: center;
+    }
+
+    .form-container,
+    .form-container-post
+    {
+        width: 70%;     
+    }
+
+    form .set{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0.5em 0;
+        height: 11em;
+        width: 100%;
+    }
+
+    form .set div:not(.radio-container):not(.form-container-desc){
+        width: 100%;
+    }
+
+    .photo{
+        margin-top: 1em;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .form-container,
+    .form-container-post
+    {
+        width: 50%;
+        min-width: 50em;
+    }
+
+    form .set{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0.5em 0;
+        height: 5em;
+    }
+
+    form .set div:not(.radio-container):not(.pets-breed):not(.photo):not(.form-container-desc){
+        width: 40%;
+    }
+
+    .pets-breed{
+        width: 60%;
+    }
+
+    .photo{
+        width: 33%;
+    }
+    
+}
+
+
+.form-container-post h2,
+.form-container-comments h2,
+.form-container-desc h2{
+    padding-top: 2em;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.form-container-post footer{
+    height: 3em;
+}
+
+
+form{
+    padding: 1.5em;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-comments form,
+.container-desc form
+{
+    padding: 0 1.5em;
+}
+
+.comments-section{
+    padding: 0 2em;
+}
+
+.container-comments footer button{
+    margin-top: 0;
+}
+
+.form-container-desc .set{
+    width: 100% !important;
+}
+
+.form-container-desc footer{
+    width: 100% !important;
+}
+
+.form-container-desc footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post-description{
+    width: 100% !important;
+}
+
+form header{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container-comments .set{
+    height: fit-content;
+}
+
+form .set div:not(.radio-container):not(.pets-breed):not(.photo):not(.form-container-desc){
+    display: flex;
+    flex-direction: column;
+}
+
+.set-label{
+    margin-bottom: 0.3em;
+}
+
+form .set input {
+    height: 3em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.7em;
+}
+
+.radio-container{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    background-color: white;
+    padding: 7px 7px;
+    border-radius: 5px;
+}
+
+
+.radio-container input[type="radio"] {
+    display: none;
+}
+
+.radio-container label{
+    padding: 7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.7em;
+    font-weight: 400;
+    width: 45%;
+    text-align: center;
+}
+
+.radio-container input[type="radio"]:checked + label{
+    background-color: #5c5470;
+    color: #fff;
+}
+
+label:hover {
+    background-color: #f0f0f0;
+}
+
+
+.set-pickup_day{
+    width: 100%;
+}
+
+.pets-breed .radio-container,
+.set-pickup_day .radio-container{
+    margin-top: 0.3em;
+}
+
+.pets-breed .radio-container label,
+.set-pickup_day .radio-container label{
+    width: 23%;
+}
+
+.photo{
+    display: flex;
+    align-items: end;
+    padding-bottom: 9px;
+}
+
+
+.form-container-post button{
+    width: 10em;
+    height: 3.5em;
+}
+
+footer button{
+    margin-top: 2em;
+    width: 10em;
+    height: 3.5em;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #5c5470;
+    border-radius: 5px;
+    color: black;
+    font-size: 0.6em;
+    cursor: pointer;
+}
+
+footer button:hover{
+    background-color: #5c5470;
+    color: white;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    padding: 14px 10px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 0.7em;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.custom-file-upload:hover {
+    background-color: #e2e6ea;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}

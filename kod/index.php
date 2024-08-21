@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (mysqli_query($con, $query)) {
                     $_SESSION['user_id'] = mysqli_insert_id($con);
                     $_SESSION['user_email'] = $email;
-                    $_SESSION['username'] = $username;
                     $_SESSION['user_logged_in'] = true;
                     $_SESSION['is_admin'] = false;
                     header("Location: home.php");

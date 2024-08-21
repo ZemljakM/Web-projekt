@@ -45,10 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Comments</title>
+    <title>Animal Shelter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="form.css">
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
@@ -57,10 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Animal shelter</h1>
     <div class="nav-links">
         <a href="home.php">Home</a>
-        <a href="new_post.php">New post</a>
-        <a href="profile.php">Profile</a>
+        <?php if ($_SESSION['is_admin']): ?>
+            <a href="new_post.php">New post</a>
+        <?php endif; ?>
         <a href="adoption.php">Adoption</a>
-        <a href="donation.php">Donation</a>
+        <a href="profile.php">Profile</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
@@ -70,38 +72,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </nav>
 
-<div class="post">
-    <div class="post-header">
-        <span class="username">Animal shelter</span>
-        <ion-icon name="create-outline"></ion-icon>
-    </div>
-    <div class="post-images">
-        <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['description']; ?>">
-    </div>
-    <div class="post-actions">
-        <ion-icon name="heart-outline" class="like-icon"></ion-icon>
-        <ion-icon name="chatbubble-outline"></ion-icon>
-    </div>
-    <div class="post-likes"><?php echo $post['likes']; ?> likes</div>
-    <div class="post-description"><?php echo $post['description']; ?></div>
-    <div class="post-comments"><?php echo $post['comments']; ?> comments</div>
-</div>
-
-<div class="comments-section">
-    <h2>Comments</h2>
-    <?php while ($comment = mysqli_fetch_assoc($commentsResult)): ?>
-        <div class="comment">
-            <strong><?php echo $comment['username']; ?>:</strong>
-            <p><?php echo $comment['comment']; ?></p>
+<div class="container-comments">
+    <div class="post">
+        <div class="post-header">
+            <span class="username">Animal shelter</span>
         </div>
-    <?php endwhile; ?>
+        <div class="post-images">
+            <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['description']; ?>">
+        </div>
+        <div class="post-actions">
+            <ion-icon name="heart-outline" class="like-icon"></ion-icon>
+            <ion-icon name="chatbubble-outline"></ion-icon>
+        </div>
+        <div class="post-likes"><?php echo $post['likes']; ?> likes</div>
+        <div class="post-description"><?php echo $post['description']; ?></div>
+        <div class="post-comments"><?php echo $post['comments']; ?> comments</div>
+    </div>
+
+
+    <div class="form-container-comments">
+        <h2>Comments</h2>
+        <form method="post" action="">
+            <header>
+                <div class="set">
+                    <div class="post-description">
+                        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                        <input type="text" id="comment" name="comment" placeholder="Write a comment..." required>
+                    </div>
+                </div>
+                <div class="set">
+                    <footer>
+                        <div class="set">
+                            <button type="submit" name="save_comment">Save comment</button>
+                        </div>
+                    </footer>
+                </div>
+            </header>
+        </form>
+        <div class="comments-section">
+            <ul>
+                <?php while ($comment = mysqli_fetch_assoc($commentsResult)): ?>
+                    <li>
+                        <p> <strong><?php echo $comment['username']; ?>:  </strong>   <?php echo $comment['comment']; ?></p>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
+        </div>
+    </div>
+
 </div>
 
-<form method="post" action="">
-    <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-    <textarea name="comment" placeholder="Write a comment..."></textarea>
-    <button type="submit" name="save_comment">Save comment</button>
-</form>
 
+<script src="script.js"></script>
 </body>
 </html>
